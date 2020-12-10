@@ -1,4 +1,4 @@
-import { GameState } from "../types";
+import { GameState } from "../../types";
 
 const deck = [
   { value: "2c", suit: "clubs", displayValue: "2" },
