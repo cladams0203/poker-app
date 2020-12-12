@@ -1,0 +1,28 @@
+.table {
+  background-color: darkgreen;
+  width: 80%;
+  height: 90vh;
+  margin-top: 5vh;
+  max-height: 450px;
+  border-radius: 25rem;
+  box-shadow: 5px 5px 10px black;
+  border: 1rem solid rgb(119, 60, 60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inner-table {
+  width: 95%;
+  height: 90%;
+  border: 1px solid rgb(156, 151, 151);
+  border-radius: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.community {
+  border: 1px dashed gray;
+  height: 25%;
+  width: 30%;
+  margin-bottom: 5%;
+}
