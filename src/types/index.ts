@@ -5,6 +5,8 @@ import {
   ADD_TO_HAND,
   FLOP,
   TURN_RIVER,
+  FINAL_HAND,
+  WINNER,
 } from "../state/actions/gameActions";
 
 export interface Card {
@@ -16,11 +18,13 @@ export interface Card {
 export interface GameState {
   deck: Card[];
   players: Player[];
-  pot: Number;
-  smallBlind: Number;
-  bigBlind: Number;
+  pot: number;
+  smallBlind: number;
+  bigBlind: number;
   community: Card[];
   burn: Card[];
+  winner: Winner;
+  winningHands: [];
 }
 
 export interface AppState {
@@ -29,23 +33,26 @@ export interface AppState {
 export interface User {
   username: string;
   email: string;
-  id: Number;
+  id: number;
 }
 
 export interface Player {
   user: User;
-  playerId: Number;
-  chips: Number;
+  playerId: number;
+  chips: number;
   currentHand: Card[];
+  finalHand: string[];
 }
 
 export type GameActions =
   | { type: typeof SHUFFLE }
   | { type: typeof REMOVE_FROM_DECK }
   | { type: typeof START; payload: Player[] }
-  | { type: typeof ADD_TO_HAND; payload: { id: Number } }
+  | { type: typeof ADD_TO_HAND; payload: { id: number } }
   | { type: typeof FLOP }
-  | { type: typeof TURN_RIVER };
+  | { type: typeof TURN_RIVER }
+  | { type: typeof FINAL_HAND; payload: Player[] }
+  | { type: typeof WINNER; payload: Winner };
 
 export interface PlayingCardProps {
   item: Card;
@@ -53,4 +60,10 @@ export interface PlayingCardProps {
 
 export interface PlayerPositionProps {
   player: Player;
+  key: number;
+}
+
+export interface Winner {
+  winners: Player[];
+  desc: string;
 }

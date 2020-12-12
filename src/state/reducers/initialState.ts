@@ -63,4 +63,6 @@ export const gameState: GameState = {
   bigBlind: 0,
   community: [],
   burn: [],
+  winner: { winners: [], desc: "" },
+  winningHands: [],
 };
