@@ -12,3 +12,15 @@ header {
   justify-content: space-evenly;
   border: 2px solid red;
 }
+.opponents :nth-child(1) {
+  right: 50rem;
+  top: 60rem;
+}
+.opponents :nth-child(2) {
+  right: 60rem;
+  top: 35rem;
+}
+.opponents :nth-child(3) {
+  right: 50rem;
+  top: 10rem;
+}

@@ -29,6 +29,7 @@ export const computerPlayers: Player[] = [
     chips: 1000,
     currentHand: [],
     finalHand: [],
+    activeUser: false,
   },
   {
     user: sam,
@@ -36,6 +37,7 @@ export const computerPlayers: Player[] = [
     chips: 1000,
     currentHand: [],
     finalHand: [],
+    activeUser: false,
   },
   {
     user: tommy,
@@ -43,6 +45,7 @@ export const computerPlayers: Player[] = [
     chips: 1000,
     currentHand: [],
     finalHand: [],
+    activeUser: false,
   },
   {
     user: chris,
@@ -50,5 +53,6 @@ export const computerPlayers: Player[] = [
     chips: 1000,
     currentHand: [],
     finalHand: [],
+    activeUser: true,
   },
 ];

@@ -8,11 +8,13 @@ import {
   FINAL_HAND,
   WINNER,
 } from "../state/actions/gameActions";
+import { ERROR, LOADING, SUCCESS } from "../state/actions/userActions";
 
 export interface Card {
   value: string;
   suit: string;
   displayValue: string;
+  image: string;
 }
 
 export interface GameState {
@@ -42,6 +44,7 @@ export interface Player {
   chips: number;
   currentHand: Card[];
   finalHand: string[];
+  activeUser: boolean;
 }
 
 export type GameActions =
@@ -61,9 +64,20 @@ export interface PlayingCardProps {
 export interface PlayerPositionProps {
   player: Player;
   key: number;
+  idx: number;
 }
 
 export interface Winner {
   winners: Player[];
   desc: string;
 }
+
+export interface UserState {
+  user: User;
+  loading: boolean;
+  error: string;
+}
+export type UserActions =
+  | { type: typeof LOADING }
+  | { type: typeof ERROR; payload: string }
+  | { type: typeof SUCCESS; payload: User };

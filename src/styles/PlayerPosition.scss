@@ -1,0 +1,16 @@
+.position-players {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: darkgoldenrod;
+  padding: 1rem;
+  border-radius: 5rem;
+  z-index: 2;
+  position: relative;
+  .user {
+    font-size: 2rem;
+  }
+  .chips {
+    font-size: 1.5rem;
+  }
+}

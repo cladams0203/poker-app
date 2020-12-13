@@ -11,6 +11,7 @@ import { AppState, Player } from "./types";
 import { computerPlayers } from "./utils/helpers/computerPlayers";
 import { Table } from "./components/Table";
 import { PlayerPosition } from "./components/PlayerPosition";
+import { User } from "./components/User";
 
 import { analizeHands } from "./utils/helpers";
 
@@ -47,10 +48,21 @@ function App() {
         </button>
         <button onClick={() => findTheWinner()}>Winner</button>
       </header>
+      <div className="opponents">
+        {state.players.map((item: Player, idx) => {
+          if (item.activeUser === false) {
+            return (
+              <PlayerPosition idx={idx} key={item.playerId} player={item} />
+            );
+          }
+        })}
+      </div>
       <Table />
-      {state.players.map((item: Player) => (
-        <PlayerPosition key={item.playerId} player={item} />
-      ))}
+      {state.players.map((item: Player, idx) => {
+        if (item.activeUser === true) {
+          return <User idx={idx} key={item.playerId} player={item} />;
+        }
+      })}
     </div>
   );
 }
