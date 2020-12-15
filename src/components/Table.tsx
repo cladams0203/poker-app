@@ -1,7 +1,8 @@
 import "../styles/Table.scss";
 import { PlayingCard } from "./PlayingCard";
 import { useSelector } from "react-redux";
-import { AppState, Card } from "../types";
+import { AppState, Card, Player } from "../types";
+import { PlayerPosition } from "./PlayerPosition";
 
 export const Table: React.FC = () => {
   const state = useSelector((state: AppState) => state.game);

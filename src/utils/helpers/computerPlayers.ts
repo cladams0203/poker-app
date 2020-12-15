@@ -21,6 +21,32 @@ export const chris: User = {
   email: "",
   id: Date.now(),
 };
+export const josh: User = {
+  username: "Josh",
+  email: "",
+  id: Date.now(),
+};
+
+export const laura: User = {
+  username: "Laura",
+  email: "",
+  id: Date.now(),
+};
+export const brian: User = {
+  username: "Brian",
+  email: "",
+  id: Date.now(),
+};
+export const jason: User = {
+  username: "Jason",
+  email: "",
+  id: Date.now(),
+};
+export const mike: User = {
+  username: "Mike",
+  email: "",
+  id: Date.now(),
+};
 
 export const computerPlayers: Player[] = [
   {
@@ -29,6 +55,7 @@ export const computerPlayers: Player[] = [
     chips: 1000,
     currentHand: [],
     finalHand: [],
+    activeUser: false,
   },
   {
     user: sam,
@@ -36,6 +63,7 @@ export const computerPlayers: Player[] = [
     chips: 1000,
     currentHand: [],
     finalHand: [],
+    activeUser: false,
   },
   {
     user: tommy,
@@ -43,6 +71,7 @@ export const computerPlayers: Player[] = [
     chips: 1000,
     currentHand: [],
     finalHand: [],
+    activeUser: false,
   },
   {
     user: chris,
@@ -50,5 +79,46 @@ export const computerPlayers: Player[] = [
     chips: 1000,
     currentHand: [],
     finalHand: [],
+    activeUser: true,
+  },
+  {
+    user: josh,
+    playerId: 5,
+    chips: 1000,
+    currentHand: [],
+    finalHand: [],
+    activeUser: false,
+  },
+  {
+    user: laura,
+    playerId: 6,
+    chips: 1000,
+    currentHand: [],
+    finalHand: [],
+    activeUser: false,
+  },
+  {
+    user: jason,
+    playerId: 7,
+    chips: 1000,
+    currentHand: [],
+    finalHand: [],
+    activeUser: false,
+  },
+  {
+    user: brian,
+    playerId: 8,
+    chips: 1000,
+    currentHand: [],
+    finalHand: [],
+    activeUser: false,
+  },
+  {
+    user: mike,
+    playerId: 9,
+    chips: 1000,
+    currentHand: [],
+    finalHand: [],
+    activeUser: false,
   },
 ];

@@ -2,7 +2,7 @@
   background-color: darkgreen;
   width: 80%;
   height: 90vh;
-  margin-top: 5vh;
+  margin-top: 10vh;
   max-height: 450px;
   border-radius: 25rem;
   box-shadow: 5px 5px 10px black;
@@ -10,6 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 400px;
+  min-width: 1200px;
 }
 .inner-table {
   width: 95%;
@@ -22,7 +24,10 @@
 }
 .community {
   border: 1px dashed gray;
-  height: 25%;
-  width: 30%;
+  height: 32%;
+  width: 43%;
   margin-bottom: 5%;
+  display: flex;
+  min-height: 100px;
+  align-items: center;
 }

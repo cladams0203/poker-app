@@ -27,7 +27,6 @@ export const gameReducer = (state = gameState, action: GameActions) => {
       return {
         ...state,
         players: state.players.map((item: Player) => {
-          console.log(item.playerId);
           if (item.playerId === action.payload.id) {
             return {
               ...item,
