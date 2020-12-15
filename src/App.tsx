@@ -14,6 +14,7 @@ import { PlayerPosition } from "./components/PlayerPosition";
 import { User } from "./components/User";
 
 import { analizeHands } from "./utils/helpers";
+import { Dealer } from "./components/Dealer";
 
 function App() {
   const state = useSelector((state: AppState) => state.game);
@@ -32,6 +33,8 @@ function App() {
     analizeHands(state.players, state.community, dispatch).then((res) => {});
   };
 
+  const orderPlayers = () => {};
+
   return (
     <div className="App">
       <header>
@@ -48,6 +51,7 @@ function App() {
         </button>
         <button onClick={() => findTheWinner()}>Winner</button>
       </header>
+
       <div className="opponents">
         {state.players.map((item: Player, idx) => {
           if (item.activeUser === false) {
@@ -57,9 +61,11 @@ function App() {
           }
         })}
       </div>
+      <Dealer />
       <Table />
       {state.players.map((item: Player, idx) => {
-        if (item.activeUser === true) {
+        if (item.activeUser) {
+          console.log("fired");
           return <User idx={idx} key={item.playerId} player={item} />;
         }
       })}

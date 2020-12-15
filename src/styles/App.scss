@@ -12,15 +12,41 @@ header {
   justify-content: space-evenly;
   border: 2px solid red;
 }
+.opponents {
+  width: 100%;
+  position: relative;
+  min-width: 1300px;
+}
+
 .opponents :nth-child(1) {
-  right: 50rem;
-  top: 60rem;
+  left: 20rem;
+  top: 52rem;
 }
 .opponents :nth-child(2) {
-  right: 60rem;
-  top: 35rem;
+  left: 5rem;
+  top: 36rem;
 }
 .opponents :nth-child(3) {
-  right: 50rem;
-  top: 10rem;
+  left: 5rem;
+  top: 19rem;
+}
+.opponents :nth-child(4) {
+  left: 20rem;
+  top: 7rem;
+}
+.opponents :nth-child(5) {
+  right: 20rem;
+  top: 7rem;
+}
+.opponents :nth-child(6) {
+  right: 5rem;
+  top: 19rem;
+}
+.opponents :nth-child(7) {
+  right: 5rem;
+  top: 36rem;
+}
+.opponents :nth-child(8) {
+  right: 20rem;
+  top: 52rem;
 }

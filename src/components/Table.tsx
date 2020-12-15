@@ -8,11 +8,6 @@ export const Table: React.FC = () => {
   const state = useSelector((state: AppState) => state.game);
   return (
     <div className="table">
-      {/* {state.players.map((item: Player) => {
-        if (item.activeUser === false) {
-          return <PlayerPosition key={item.playerId} player={item} />;
-        }
-      })} */}
       <div className="inner-table">
         <div className="community">
           {state.community.map((item: Card) => (

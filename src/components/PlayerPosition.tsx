@@ -6,7 +6,7 @@ export const PlayerPosition: React.FC<PlayerPositionProps> = ({
 }) => {
   const { chips, currentHand } = player;
   return (
-    <div className={`position-players ${idx}`}>
+    <div className="position-players">
       <p className="user"> {player.user.username} </p>
       {/* {currentHand.map((item, idx) => (
           <div key={idx}>
