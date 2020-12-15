@@ -15,6 +15,7 @@ import { User } from "./components/User";
 
 import { analizeHands } from "./utils/helpers";
 import { Dealer } from "./components/Dealer";
+import { start } from "repl";
 
 function App() {
   const state = useSelector((state: AppState) => state.game);
@@ -33,7 +34,21 @@ function App() {
     analizeHands(state.players, state.community, dispatch).then((res) => {});
   };
 
-  const orderPlayers = () => {};
+  const orderPlayers = () => {
+    const currentUser = state.players.find((item) => item.activeUser);
+    const currentId = currentUser?.playerId;
+    let newPlayerArray: Player[] = [];
+    if (currentId) {
+      if (currentId > 1) {
+        const leftOfCurrent = state.players.slice(currentId);
+        const rightOfCurrent = state.players.slice(0, currentId - 1);
+        newPlayerArray = leftOfCurrent.concat(rightOfCurrent);
+      }
+    }
+    const updatedPlayers = [currentUser, ...newPlayerArray];
+    dispatch({ type: START, payload: updatedPlayers });
+    console.log(updatedPlayers);
+  };
 
   return (
     <div className="App">
@@ -44,6 +59,7 @@ function App() {
         >
           Start
         </button>
+        <button onClick={() => orderPlayers()}>Order Players</button>
         <button onClick={() => deal()}>Deal</button>
         <button onClick={() => dispatch({ type: FLOP })}>Flop</button>
         <button onClick={() => dispatch({ type: TURN_RIVER })}>
