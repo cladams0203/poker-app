@@ -1,17 +1,15 @@
 .table {
   background-color: darkgreen;
+  display: flex;
   width: 80%;
   height: 90vh;
-  margin-top: 10vh;
-  max-height: 450px;
+  margin-top: 90px;
   border-radius: 25rem;
   box-shadow: 5px 5px 10px black;
   border: 1rem solid rgb(119, 60, 60);
-  display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  min-width: 1200px;
+  max-height: 450px;
 }
 .inner-table {
   width: 95%;

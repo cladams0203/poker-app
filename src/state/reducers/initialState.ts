@@ -111,6 +111,7 @@ export const gameState: GameState = {
   deck: deck,
   players: [],
   pot: 0,
+  currentBet: 0,
   smallBlind: 0,
   bigBlind: 0,
   community: [],

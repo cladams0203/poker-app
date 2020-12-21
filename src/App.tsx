@@ -15,7 +15,6 @@ import { User } from "./components/User";
 
 import { analizeHands } from "./utils/helpers";
 import { Dealer } from "./components/Dealer";
-import { start } from "repl";
 
 function App() {
   const state = useSelector((state: AppState) => state.game);

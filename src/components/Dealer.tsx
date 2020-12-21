@@ -1,6 +1,10 @@
 import "../styles/Dealer.scss";
 
+import { useSelector } from "react-redux";
+import { AppState } from "../types";
+
 export const Dealer = () => {
+  const state = useSelector((state: AppState) => state.game);
   return (
     <div className="dealer-container">
       <div className="dealer-box">
@@ -8,8 +12,8 @@ export const Dealer = () => {
           <p>Blinds: $15/30</p>
           <p>Increases in 5.00s</p>
         </div>
-        <p className="current-bet">Current Bet: $500</p>
-        <p className="pot">Pot $10000</p>
+        <p className="current-bet">Current Bet: {state.currentBet}</p>
+        <p className="pot">Pot {state.pot}</p>
       </div>
     </div>
   );
