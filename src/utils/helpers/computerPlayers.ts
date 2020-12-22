@@ -60,6 +60,7 @@ export const computerPlayers: Player[] = [
     isButton: true,
     isSmall: false,
     isLarge: false,
+    tablePosition: 0,
   },
   {
     user: sam,
@@ -72,6 +73,7 @@ export const computerPlayers: Player[] = [
     isButton: false,
     isSmall: true,
     isLarge: false,
+    tablePosition: 0,
   },
   {
     user: tommy,
@@ -83,7 +85,8 @@ export const computerPlayers: Player[] = [
     isFolded: false,
     isButton: false,
     isSmall: false,
-    isLarge: false,
+    isLarge: true,
+    tablePosition: 0,
   },
   {
     user: chris,
@@ -96,6 +99,7 @@ export const computerPlayers: Player[] = [
     isButton: false,
     isSmall: false,
     isLarge: true,
+    tablePosition: 0,
   },
   {
     user: josh,
@@ -108,6 +112,7 @@ export const computerPlayers: Player[] = [
     isButton: false,
     isSmall: false,
     isLarge: false,
+    tablePosition: 0,
   },
   {
     user: laura,
@@ -120,6 +125,7 @@ export const computerPlayers: Player[] = [
     isButton: false,
     isSmall: false,
     isLarge: false,
+    tablePosition: 0,
   },
   {
     user: jason,
@@ -132,6 +138,7 @@ export const computerPlayers: Player[] = [
     isButton: false,
     isSmall: false,
     isLarge: false,
+    tablePosition: 0,
   },
   {
     user: brian,
@@ -144,6 +151,7 @@ export const computerPlayers: Player[] = [
     isButton: false,
     isSmall: false,
     isLarge: false,
+    tablePosition: 0,
   },
   {
     user: mike,
@@ -156,5 +164,6 @@ export const computerPlayers: Player[] = [
     isButton: false,
     isSmall: false,
     isLarge: false,
+    tablePosition: 0,
   },
 ];

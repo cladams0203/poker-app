@@ -3,9 +3,24 @@
   flex-direction: column;
   align-items: center;
   width: 30%;
-  position: relative;
-  bottom: 10rem;
+  position: absolute;
+  bottom: -20%;
   border: 2px solid red;
+  .user-button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: lightgrey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 2px 2px 2px black;
+    position: absolute;
+    bottom: 110%;
+  }
+
   label {
     display: flex;
     flex-direction: column;

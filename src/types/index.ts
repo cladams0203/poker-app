@@ -29,6 +29,7 @@ export interface GameState {
   burn: Card[];
   winner: Winner;
   winningHands: [];
+  buttonPosition: number;
 }
 
 export interface AppState {
@@ -51,6 +52,7 @@ export interface Player {
   isSmall: boolean;
   isLarge: boolean;
   isButton: boolean;
+  tablePosition: number;
 }
 
 export type GameActions =

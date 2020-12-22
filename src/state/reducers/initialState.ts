@@ -118,6 +118,7 @@ export const gameState: GameState = {
   burn: [],
   winner: { winners: [], desc: "" },
   winningHands: [],
+  buttonPosition: 1,
 };
 
 export const userState: UserState = {

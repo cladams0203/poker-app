@@ -45,6 +45,10 @@ function App() {
       }
     }
     const updatedPlayers = [currentUser, ...newPlayerArray];
+    // const orderedPlayers = updatedPlayers.map((item, idx) => ({
+    //   ...item,
+    //   tablePosition: idx,
+    // }));
     dispatch({ type: START, payload: updatedPlayers });
     console.log(updatedPlayers);
   };
@@ -67,7 +71,7 @@ function App() {
         <button onClick={() => findTheWinner()}>Winner</button>
       </header>
 
-      <div className="opponents">
+      {/* <div className="opponents">
         {state.players.map((item: Player, idx) => {
           if (item.activeUser === false) {
             return (
@@ -75,15 +79,15 @@ function App() {
             );
           }
         })}
-      </div>
-      <Dealer />
+      </div> */}
+      {/* <Dealer /> */}
       <Table />
-      {state.players.map((item: Player, idx) => {
+      {/* {state.players.map((item: Player, idx) => {
         if (item.activeUser) {
           console.log("fired");
           return <User idx={idx} key={item.playerId} player={item} />;
         }
-      })}
+      })} */}
     </div>
   );
 }
