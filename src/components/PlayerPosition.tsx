@@ -4,17 +4,18 @@ export const PlayerPosition: React.FC<PlayerPositionProps> = ({
   player,
   idx,
 }) => {
-  const { chips, currentHand } = player;
+  const { chips, isFolded, isButton, isSmall, isLarge } = player;
   return (
-    <div className="position-players">
+    <div
+      className={`position-players position${idx} ${
+        isFolded ? "folded" : null
+      }`}
+    >
       <p className="user"> {player.user.username} </p>
-      {/* {currentHand.map((item, idx) => (
-          <div key={idx}>
-            <h4>{item.displayValue}</h4>
-            <p>{item.suit}</p>
-          </div>
-        ))} */}
       <p className="chips">Chips: {chips} </p>
+      {isButton && <div className={`dealer-button`}>D</div>}
+      {isSmall && <div className={`dealer-button`}>SB</div>}
+      {isLarge && <div className={`dealer-button`}>BB</div>}
     </div>
   );
 };

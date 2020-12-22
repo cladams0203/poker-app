@@ -5,48 +5,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 header {
   width: 70%;
   display: flex;
   justify-content: space-evenly;
   border: 2px solid red;
-}
-.opponents {
-  width: 100%;
-  position: relative;
-  min-width: 1300px;
-}
-
-.opponents :nth-child(1) {
-  left: 20rem;
-  top: 52rem;
-}
-.opponents :nth-child(2) {
-  left: 5rem;
-  top: 36rem;
-}
-.opponents :nth-child(3) {
-  left: 5rem;
-  top: 19rem;
-}
-.opponents :nth-child(4) {
-  left: 20rem;
-  top: 7rem;
-}
-.opponents :nth-child(5) {
-  right: 20rem;
-  top: 7rem;
-}
-.opponents :nth-child(6) {
-  right: 5rem;
-  top: 19rem;
-}
-.opponents :nth-child(7) {
-  right: 5rem;
-  top: 36rem;
-}
-.opponents :nth-child(8) {
-  right: 20rem;
-  top: 52rem;
 }

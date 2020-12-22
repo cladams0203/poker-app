@@ -8,6 +8,7 @@ import {
   TURN_RIVER,
   FINAL_HAND,
   WINNER,
+  BET,
 } from "../actions/gameActions";
 import { shuffle } from "../../utils/helpers";
 
@@ -61,6 +62,18 @@ export const gameReducer = (state = gameState, action: GameActions) => {
       return {
         ...state,
         winner: action.payload,
+      };
+    case BET:
+      return {
+        ...state,
+        currentBet: action.payload.amt,
+        pot: (state.pot += action.payload.amt),
+        players: state.players.map((item: Player) => {
+          if (item.playerId === action.payload.id) {
+            return { ...item, chips: (item.chips -= action.payload.amt) };
+          }
+          return item;
+        }),
       };
     default:
       return state;

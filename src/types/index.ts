@@ -7,6 +7,7 @@ import {
   TURN_RIVER,
   FINAL_HAND,
   WINNER,
+  BET,
 } from "../state/actions/gameActions";
 import { ERROR, LOADING, SUCCESS } from "../state/actions/userActions";
 
@@ -21,12 +22,14 @@ export interface GameState {
   deck: Card[];
   players: Player[];
   pot: number;
+  currentBet: number;
   smallBlind: number;
   bigBlind: number;
   community: Card[];
   burn: Card[];
   winner: Winner;
   winningHands: [];
+  buttonPosition: number;
 }
 
 export interface AppState {
@@ -45,6 +48,11 @@ export interface Player {
   currentHand: Card[];
   finalHand: string[];
   activeUser: boolean;
+  isFolded: boolean;
+  isSmall: boolean;
+  isLarge: boolean;
+  isButton: boolean;
+  tablePosition: number;
 }
 
 export type GameActions =
@@ -55,7 +63,8 @@ export type GameActions =
   | { type: typeof FLOP }
   | { type: typeof TURN_RIVER }
   | { type: typeof FINAL_HAND; payload: Player[] }
-  | { type: typeof WINNER; payload: Winner };
+  | { type: typeof WINNER; payload: Winner }
+  | { type: typeof BET; payload: { id: number; amt: number } };
 
 export interface PlayingCardProps {
   item: Card;

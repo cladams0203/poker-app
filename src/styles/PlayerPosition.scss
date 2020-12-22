@@ -1,12 +1,15 @@
 .position-players {
   display: flex;
   width: 100px;
+  height: 100px;
   flex-direction: column;
   align-items: center;
-  background-color: darkgoldenrod;
+  justify-content: space-evenly;
+  background-color: lightslategrey;
+  border: 0.5rem solid rgb(119, 60, 60);
+  box-shadow: 2px 2px 5px black;
   padding: 1rem;
-  border-radius: 5rem;
-  z-index: 3;
+  border-radius: 50%;
   position: absolute;
   .user {
     font-size: 2rem;
@@ -14,4 +17,21 @@
   .chips {
     font-size: 1.5rem;
   }
+}
+.folded {
+  opacity: 50%;
+}
+.dealer-button {
+  width: 3rem;
+  height: 3rem;
+  background-color: lightgray;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  border: 2px solid rgb(46, 45, 45);
+  box-shadow: 2px 2px 2px black;
 }
