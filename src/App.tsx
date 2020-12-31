@@ -1,5 +1,7 @@
 import "./styles/App.scss";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Route, Switch } from "react-router-dom";
 import {
   ADD_TO_HAND,
   FLOP,
@@ -10,15 +12,21 @@ import {
 import { AppState, Player } from "./types";
 import { computerPlayers } from "./utils/helpers/computerPlayers";
 import { Table } from "./components/Table";
-import { PlayerPosition } from "./components/PlayerPosition";
-import { User } from "./components/User";
 
 import { analizeHands } from "./utils/helpers";
-import { Dealer } from "./components/Dealer";
+
+import io from "socket.io-client";
 
 function App() {
   const state = useSelector((state: AppState) => state.game);
   const dispatch = useDispatch();
+
+  const socket = io("http://127.0.0.1:5000");
+  useEffect(() => {
+    socket.on("from_Api", (data: any) => {
+      console.log(data);
+    });
+  }, []);
 
   const deal = () => {
     state.players.forEach((item: Player) => {
@@ -30,6 +38,9 @@ function App() {
   };
 
   const findTheWinner = () => {
+    socket.on("app_data", () => "hello");
+    socket.emit("app_data", "hey");
+    // socket.off("app_data");
     analizeHands(state.players, state.community, dispatch).then((res) => {});
   };
 
@@ -45,10 +56,7 @@ function App() {
       }
     }
     const updatedPlayers = [currentUser, ...newPlayerArray];
-    // const orderedPlayers = updatedPlayers.map((item, idx) => ({
-    //   ...item,
-    //   tablePosition: idx,
-    // }));
+
     dispatch({ type: START, payload: updatedPlayers });
     console.log(updatedPlayers);
   };
