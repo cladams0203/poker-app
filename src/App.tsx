@@ -10,23 +10,20 @@ import {
   TURN_RIVER,
 } from "./state/actions/gameActions";
 import { AppState, Player } from "./types";
+import { ProtectedRoute } from "./utils/auth/ProtectedRoute";
 import { computerPlayers } from "./utils/helpers/computerPlayers";
 import { Table } from "./components/Table";
+import { Register } from "./components/Register";
+import { Login } from "./components/Login";
 
 import { analizeHands } from "./utils/helpers";
 
 import io from "socket.io-client";
+import { Dashbaord } from "./components/Dashboard";
 
 function App() {
   const state = useSelector((state: AppState) => state.game);
   const dispatch = useDispatch();
-
-  const socket = io("http://127.0.0.1:5000");
-  useEffect(() => {
-    socket.on("from_Api", (data: any) => {
-      console.log(data);
-    });
-  }, []);
 
   const deal = () => {
     state.players.forEach((item: Player) => {
@@ -38,9 +35,6 @@ function App() {
   };
 
   const findTheWinner = () => {
-    socket.on("app_data", () => "hello");
-    socket.emit("app_data", "hey");
-    // socket.off("app_data");
     analizeHands(state.players, state.community, dispatch).then((res) => {});
   };
 
@@ -78,24 +72,20 @@ function App() {
         </button>
         <button onClick={() => findTheWinner()}>Winner</button>
       </header>
-
-      {/* <div className="opponents">
-        {state.players.map((item: Player, idx) => {
-          if (item.activeUser === false) {
-            return (
-              <PlayerPosition idx={idx} key={item.playerId} player={item} />
-            );
-          }
-        })}
-      </div> */}
-      {/* <Dealer /> */}
-      <Table />
-      {/* {state.players.map((item: Player, idx) => {
-        if (item.activeUser) {
-          console.log("fired");
-          return <User idx={idx} key={item.playerId} player={item} />;
-        }
-      })} */}
+      <Switch>
+        <ProtectedRoute path="/table">
+          <Table />
+        </ProtectedRoute>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/">
+          <Dashbaord />
+        </Route>
+      </Switch>
     </div>
   );
 }

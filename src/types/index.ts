@@ -1,3 +1,4 @@
+import { RouteProps } from "react-router";
 import {
   SHUFFLE,
   REMOVE_FROM_DECK,
@@ -32,8 +33,15 @@ export interface GameState {
   buttonPosition: number;
 }
 
+export interface UserState {
+  loading: boolean;
+  error: string;
+  user: User;
+}
+
 export interface AppState {
   game: GameState;
+  user: UserState;
 }
 export interface User {
   username: string;
@@ -90,3 +98,18 @@ export type UserActions =
   | { type: typeof LOADING }
   | { type: typeof ERROR; payload: string }
   | { type: typeof SUCCESS; payload: User };
+
+export interface RegisterState {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface LoginState {
+  email: string;
+  password: string;
+}
+export interface ProtectedRouteProps {
+  path: string;
+  children: RouteProps["children"];
+}

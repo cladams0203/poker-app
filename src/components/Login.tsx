@@ -1,20 +1,21 @@
 import { useState } from "react";
-import { RegisterState } from "../types";
+
+import { LoginState } from "../types";
 import { api } from "../utils/auth/api";
 import { useDispatch } from "react-redux";
 import { LOADING, SUCCESS, ERROR } from "../state/actions/userActions";
 import { useHistory } from "react-router-dom";
 
 const initialForm = {
-  username: "",
   email: "",
   password: "",
 };
 
-export const Register: React.FC = () => {
-  const [form, setForm] = useState<RegisterState>(initialForm);
+export const Login: React.FC = () => {
+  const [form, setForm] = useState<LoginState>(initialForm);
   const dispatch = useDispatch();
   const { push } = useHistory();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({
       ...form,
@@ -25,10 +26,10 @@ export const Register: React.FC = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     api()
-      .post("/api/users/register", form)
+      .post("/api/users/login", form)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
-        dispatch({ type: SUCCESS, payload: res.data.user });
+        // dispatch({ type: SUCCESS, payload: res.data.user });
         push("/");
         console.log(res);
       })
@@ -44,14 +45,6 @@ export const Register: React.FC = () => {
         <label>
           Email:
           <input onChange={handleChange} name="email" value={form.email} />
-        </label>
-        <label>
-          Username:
-          <input
-            onChange={handleChange}
-            name="username"
-            value={form.username}
-          />
         </label>
         <label>
           Password:

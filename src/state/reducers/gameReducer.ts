@@ -1,4 +1,4 @@
-import { GameActions, Player } from "../../types";
+import { GameActions, Player, GameState } from "../../types";
 import { gameState } from "./initialState";
 import {
   SHUFFLE,
@@ -12,7 +12,10 @@ import {
 } from "../actions/gameActions";
 import { shuffle } from "../../utils/helpers";
 
-export const gameReducer = (state = gameState, action: GameActions) => {
+export const gameReducer = (
+  state: GameState = gameState,
+  action: GameActions
+) => {
   switch (action.type) {
     case SHUFFLE:
       return {

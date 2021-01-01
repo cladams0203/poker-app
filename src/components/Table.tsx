@@ -5,7 +5,11 @@ import { AppState, Card, Player } from "../types";
 import { Dealer } from "./Dealer";
 import { PlayerLayout } from "./PlayerLayout";
 
+// const socket = io("http://127.0.0.1:5000");
+
 export const Table: React.FC = () => {
+  // socket.on("app_data", () => "hello");
+  // socket.emit("app_data", "hey");
   const state = useSelector((state: AppState) => state.game);
   return (
     <div className="table-container">
