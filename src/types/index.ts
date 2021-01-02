@@ -2,13 +2,14 @@ import { RouteProps } from "react-router";
 import {
   SHUFFLE,
   REMOVE_FROM_DECK,
-  START,
+  ADD_PLAYERS,
   ADD_TO_HAND,
   FLOP,
   TURN_RIVER,
   FINAL_HAND,
   WINNER,
   BET,
+  NEW_GAME,
 } from "../state/actions/gameActions";
 import { ERROR, LOADING, SUCCESS } from "../state/actions/userActions";
 
@@ -22,15 +23,21 @@ export interface Card {
 export interface GameState {
   deck: Card[];
   players: Player[];
-  pot: number;
-  currentBet: number;
-  smallBlind: number;
-  bigBlind: number;
-  community: Card[];
-  burn: Card[];
+  table: NewGame;
+  // pot: number;
+  // currentBet: number;
+  // smallBlind: number;
+  // bigBlind: number;
+  // community: Card[];
+  // burn: Card[];
   winner: Winner;
   winningHands: [];
   buttonPosition: number;
+  // user_id: number;
+  // tableName: string;
+  // tableCode: string;
+  // id: number;
+  // blindTimer: number;
 }
 
 export interface UserState {
@@ -63,16 +70,32 @@ export interface Player {
   tablePosition: number;
 }
 
+export interface NewGame {
+  pot: number;
+  startingChips: number;
+  currentBet: number;
+  smallBlind: number;
+  bigBlind: number;
+  community: Card[];
+  burn: Card[];
+  user_id: number;
+  tableName: string;
+  tableCode: string;
+  id: number;
+  blindTimer: number;
+}
+
 export type GameActions =
   | { type: typeof SHUFFLE }
   | { type: typeof REMOVE_FROM_DECK }
-  | { type: typeof START; payload: Player[] }
+  | { type: typeof ADD_PLAYERS; payload: Player[] }
   | { type: typeof ADD_TO_HAND; payload: { id: number } }
   | { type: typeof FLOP }
   | { type: typeof TURN_RIVER }
   | { type: typeof FINAL_HAND; payload: Player[] }
   | { type: typeof WINNER; payload: Winner }
-  | { type: typeof BET; payload: { id: number; amt: number } };
+  | { type: typeof BET; payload: { id: number; amt: number } }
+  | { type: typeof NEW_GAME; payload: NewGame };
 
 export interface PlayingCardProps {
   item: Card;

@@ -3,10 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { SUCCESS } from "../state/actions/userActions";
 import { AppState } from "../types";
 import { api } from "../utils/auth/api";
-export const Dashbaord: React.FC = () => {
-  const user = useSelector((state: AppState) => state.user.user);
-  const dispatch = useDispatch();
+import { useHistory } from "react-router-dom";
+import { NEW_GAME } from "../state/actions/gameActions";
 
+export const Dashbaord: React.FC = () => {
+  const state = useSelector((state: AppState) => state);
+  const dispatch = useDispatch();
+  const { push } = useHistory();
+  const [toggle, setToggle] = useState(false);
+  const [form, setForm] = useState("");
   useEffect(() => {
     api()
       .get("/api/users")
@@ -18,11 +23,44 @@ export const Dashbaord: React.FC = () => {
         console.log(err);
       });
   }, []);
+
+  const joinTable = () => {
+    api()
+      .get(`/api/table/code/${form.toUpperCase()}`)
+      .then((res) => {
+        console.log(res);
+        dispatch({ type: NEW_GAME, payload: res.data });
+        const playerData = {
+          playername: state.user.user.username,
+          chips: state.game.table.startingChips,
+        };
+        api()
+          .post(`/api/players/${state.game.table.tableCode}`, playerData)
+          .then((res) => {
+            console.log(res);
+            push("/table");
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
   return (
-    <div>
-      <h3>Welcome {user.username} </h3>
-      <button>Create Table</button>
-      <button>Join Existing Table</button>
-    </div>
+    <>
+      {!toggle ? (
+        <div>
+          <h3>Welcome {state.user.user.username} </h3>
+          <button onClick={() => push("/create-table")}>Create Table</button>
+          <button onClick={() => setToggle(true)}>Join Existing Table</button>
+        </div>
+      ) : (
+        <div>
+          <label>
+            Table Code:
+            <input value={form} onChange={(e) => setForm(e.target.value)} />
+          </label>
+          <button onClick={() => joinTable()}>Join Table</button>
+        </div>
+      )}
+    </>
   );
 };

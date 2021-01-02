@@ -1,16 +1,28 @@
 import "../styles/Table.scss";
+import { useEffect } from "react";
 import { PlayingCard } from "./PlayingCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { AppState, Card, Player } from "../types";
 import { Dealer } from "./Dealer";
 import { PlayerLayout } from "./PlayerLayout";
+import io from "socket.io-client";
+import { ADD_PLAYERS } from "../state/actions/gameActions";
 
-// const socket = io("http://127.0.0.1:5000");
+const socket = io("http://127.0.0.1:5000");
 
 export const Table: React.FC = () => {
-  // socket.on("app_data", () => "hello");
-  // socket.emit("app_data", "hey");
   const state = useSelector((state: AppState) => state.game);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log(socket.id);
+    });
+    socket.emit("room", state.table.tableCode);
+    socket.on("players", (res: any) => {
+      dispatch({ type: ADD_PLAYERS, payload: res });
+    });
+  }, []);
+
   return (
     <div className="table-container">
       <div className="table">
@@ -20,9 +32,10 @@ export const Table: React.FC = () => {
             B
           </div> */}
           <div className="community">
-            {state.community.map((item: Card) => (
-              <PlayingCard item={item} />
-            ))}
+            {state.table.community &&
+              state.table.community.map((item: Card) => (
+                <PlayingCard item={item} />
+              ))}
           </div>
         </div>
       </div>

@@ -110,15 +110,23 @@ const deck = [
 export const gameState: GameState = {
   deck: deck,
   players: [],
-  pot: 0,
-  currentBet: 0,
-  smallBlind: 0,
-  bigBlind: 0,
-  community: [],
-  burn: [],
-  winner: { winners: [], desc: "" },
-  winningHands: [],
+  table: {
+    pot: 0,
+    startingChips: 0,
+    currentBet: 0,
+    smallBlind: 0,
+    bigBlind: 0,
+    community: [],
+    burn: [],
+    tableName: "",
+    tableCode: "",
+    user_id: 0,
+    id: 0,
+    blindTimer: 0,
+  },
   buttonPosition: 1,
+  winningHands: [],
+  winner: { winners: [], desc: "" },
 };
 
 export const userState: UserState = {

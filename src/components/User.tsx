@@ -12,12 +12,12 @@ export const User: React.FC = () => {
   const call = () => {
     dispatch({
       type: BET,
-      payload: { id: user.playerId, amt: state.currentBet },
+      payload: { id: user.playerId, amt: state.table.currentBet },
     });
   };
 
   const enableRaise = () => {
-    setRaise({ ...raise, allow: true, amount: state.currentBet });
+    setRaise({ ...raise, allow: true, amount: state.table.currentBet });
   };
 
   const submitRaise = (e: React.FormEvent<HTMLFormElement>) => {
@@ -35,9 +35,10 @@ export const User: React.FC = () => {
         <div className="active-user">
           {user.isButton && <div className="user-button">D</div>}
           <div className="user-cards">
-            {user.currentHand.map((item: Card) => (
-              <img src={item.image} alt={item.displayValue} />
-            ))}
+            {user.currentHand &&
+              user.currentHand.map((item: Card) => (
+                <img src={item.image} alt={item.displayValue} />
+              ))}
           </div>
           <p className="user-chips">Chips: {user.chips}</p>
           {!raise.allow && (

@@ -67,3 +67,13 @@ export const shuffle = (arry: Card[]) => {
   });
   return newArray;
 };
+
+export const tableCode = async () => {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let code = "";
+  for (let i = 0; i < 4; i++) {
+    const letter = Math.floor(Math.random() * letters.length);
+    code = code + letters[letter];
+  }
+  return code;
+};

@@ -1,12 +1,11 @@
 import "./styles/App.scss";
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import {
   ADD_TO_HAND,
   FLOP,
   SHUFFLE,
-  START,
+  ADD_PLAYERS,
   TURN_RIVER,
 } from "./state/actions/gameActions";
 import { AppState, Player } from "./types";
@@ -18,8 +17,8 @@ import { Login } from "./components/Login";
 
 import { analizeHands } from "./utils/helpers";
 
-import io from "socket.io-client";
 import { Dashbaord } from "./components/Dashboard";
+import { TableForm } from "./components/TableForm";
 
 function App() {
   const state = useSelector((state: AppState) => state.game);
@@ -35,7 +34,11 @@ function App() {
   };
 
   const findTheWinner = () => {
-    analizeHands(state.players, state.community, dispatch).then((res) => {});
+    analizeHands(
+      state.players,
+      state.table.community,
+      dispatch
+    ).then((res) => {});
   };
 
   const orderPlayers = () => {
@@ -51,7 +54,7 @@ function App() {
     }
     const updatedPlayers = [currentUser, ...newPlayerArray];
 
-    dispatch({ type: START, payload: updatedPlayers });
+    dispatch({ type: ADD_PLAYERS, payload: updatedPlayers });
     console.log(updatedPlayers);
   };
 
@@ -60,7 +63,9 @@ function App() {
       <header>
         <button onClick={() => dispatch({ type: SHUFFLE })}>Shuffle</button>
         <button
-          onClick={() => dispatch({ type: START, payload: computerPlayers })}
+          onClick={() =>
+            dispatch({ type: ADD_PLAYERS, payload: computerPlayers })
+          }
         >
           Start
         </button>
@@ -82,9 +87,12 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/">
-          <Dashbaord />
+        <Route path="/create-table">
+          <TableForm />
         </Route>
+        <ProtectedRoute path="/">
+          <Dashbaord />
+        </ProtectedRoute>
       </Switch>
     </div>
   );

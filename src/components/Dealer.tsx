@@ -12,8 +12,8 @@ export const Dealer = () => {
         <p>Blinds: $15/30</p>
         <p>Increases in 5.00s</p>
       </div>
-      <p className="current-bet">Current Bet: {state.currentBet}</p>
-      <p className="pot">Pot {state.pot}</p>
+      <p className="current-bet">Current Bet: {state.table.currentBet}</p>
+      <p className="pot">Pot {state.table.pot}</p>
     </div>
     // </div>
   );
