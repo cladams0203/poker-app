@@ -2,7 +2,6 @@ import { Route, Redirect } from "react-router-dom";
 import { ProtectedRouteProps } from "../../types";
 
 export function ProtectedRoute(props: ProtectedRouteProps) {
-  console.log(props);
   const { children, ...rest } = props;
   return (
     <Route

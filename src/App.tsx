@@ -5,12 +5,11 @@ import {
   ADD_TO_HAND,
   FLOP,
   SHUFFLE,
-  ADD_PLAYERS,
   TURN_RIVER,
 } from "./state/actions/gameActions";
 import { AppState, Player } from "./types";
 import { ProtectedRoute } from "./utils/auth/ProtectedRoute";
-import { computerPlayers } from "./utils/helpers/computerPlayers";
+// import { computerPlayers } from "./utils/helpers/computerPlayers";
 import { Table } from "./components/Table";
 import { Register } from "./components/Register";
 import { Login } from "./components/Login";
@@ -41,35 +40,10 @@ function App() {
     ).then((res) => {});
   };
 
-  const orderPlayers = () => {
-    const currentUser = state.players.find((item) => item.activeUser);
-    const currentId = currentUser?.playerId;
-    let newPlayerArray: Player[] = [];
-    if (currentId) {
-      if (currentId > 1) {
-        const leftOfCurrent = state.players.slice(currentId);
-        const rightOfCurrent = state.players.slice(0, currentId - 1);
-        newPlayerArray = leftOfCurrent.concat(rightOfCurrent);
-      }
-    }
-    const updatedPlayers = [currentUser, ...newPlayerArray];
-
-    dispatch({ type: ADD_PLAYERS, payload: updatedPlayers });
-    console.log(updatedPlayers);
-  };
-
   return (
     <div className="App">
       <header>
         <button onClick={() => dispatch({ type: SHUFFLE })}>Shuffle</button>
-        <button
-          onClick={() =>
-            dispatch({ type: ADD_PLAYERS, payload: computerPlayers })
-          }
-        >
-          Start
-        </button>
-        <button onClick={() => orderPlayers()}>Order Players</button>
         <button onClick={() => deal()}>Deal</button>
         <button onClick={() => dispatch({ type: FLOP })}>Flop</button>
         <button onClick={() => dispatch({ type: TURN_RIVER })}>

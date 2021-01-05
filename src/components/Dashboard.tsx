@@ -33,9 +33,10 @@ export const Dashbaord: React.FC = () => {
         const playerData = {
           playername: state.user.user.username,
           chips: state.game.table.startingChips,
+          user: state.user.user.id,
         };
         api()
-          .post(`/api/players/${state.game.table.tableCode}`, playerData)
+          .post(`/api/players/${res.data.tableCode}`, playerData)
           .then((res) => {
             console.log(res);
             push("/table");

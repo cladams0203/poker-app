@@ -24,20 +24,9 @@ export interface GameState {
   deck: Card[];
   players: Player[];
   table: NewGame;
-  // pot: number;
-  // currentBet: number;
-  // smallBlind: number;
-  // bigBlind: number;
-  // community: Card[];
-  // burn: Card[];
   winner: Winner;
   winningHands: [];
   buttonPosition: number;
-  // user_id: number;
-  // tableName: string;
-  // tableCode: string;
-  // id: number;
-  // blindTimer: number;
 }
 
 export interface UserState {
@@ -57,17 +46,18 @@ export interface User {
 }
 
 export interface Player {
-  user: User;
   playerId: number;
   chips: number;
   currentHand: Card[];
   finalHand: string[];
-  activeUser: boolean;
+  // activeUser: boolean;
   isFolded: boolean;
   isSmall: boolean;
   isLarge: boolean;
   isButton: boolean;
-  tablePosition: number;
+  // tablePosition: number;
+  user: number;
+  playername: string;
 }
 
 export interface NewGame {
@@ -83,6 +73,7 @@ export interface NewGame {
   tableCode: string;
   id: number;
   blindTimer: number;
+  buttonLocation: number;
 }
 
 export type GameActions =

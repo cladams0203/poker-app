@@ -42,6 +42,7 @@ export const TableForm: React.FC = () => {
     const playerData = {
       playername: state.user.user.username,
       chips: state.game.table.startingChips,
+      user: state.user.user.id,
     };
     api()
       .post(`/api/players/${state.game.table.tableCode}`, playerData)

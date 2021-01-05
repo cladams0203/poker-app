@@ -123,6 +123,7 @@ export const gameState: GameState = {
     user_id: 0,
     id: 0,
     blindTimer: 0,
+    buttonLocation: 0,
   },
   buttonPosition: 1,
   winningHands: [],
